@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+	<link rel="import" href="/head-meta">
+
+</head>
+
+<script src ="app.js"></script>
+<script type="text/javascript" src="references/js/loadpage.js"></script>
+<script type="text/javascript" src="references/js/resizebody.js"></script>
+
+<script src ="indexController.js"></script>
+<script src ="homeController.js"></script>
+
+<body onload='resizing();onLoad();'>
+
+<div id="snackbar">Some text some message..</div>
+
+<!-- MentorSignupModal -->
+									<div id="MentorSignupModal" ng-controller="indexController" class="modal fade" role="dialog" style="z-index: 10;">
+									  <div class="modal-dialog modal-lg">
+
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header" style="background-color: #800000; color: #FFFFFF;">
+									        <button type="button" class="close" data-dismiss="modal" style="color: #FFFFFF;">&times;</button>
+									        <h4 class="modal-title" style="font: 20px Impact, fantasy;font-variant: small-caps;font-style: oblique;">Mentor Sign Up</h4>
+									      </div>
+									      <div class="modal-body">
+									        
+									      	<!--  -->
+									        <div class="row">
+			
+				<div class="col-lg-12">
+					
+						
+						<div style="height: 20px;"></div>
+								
+
+						<table class="table center login">
+							
+							
+							<tr ng-show="SignupSuccess != ''">
+								<td class="text-success error-font">{{SignupSuccess}}</td>							  		
+							</tr>
+							
+							<tr ng-show="SignupFailure != ''">
+								<td class="text-danger error-font">{{SignupFailure}}</td>							  		
+							</tr>
+							
+							<tr>
+								<td><input path="email" type="email" ng-model="Email" ng-change="ValidateEmail()" class="form-control form-input" placeholder="Enter Email"/></td>
+							</tr>
+							<tr ng-show="EmailError">
+							<td class="text-danger error-font">Invalid Email Format</td>							  		
+							</tr>
+							
+							<tr>
+								<td><input path="username" ng-model="Username" ng-change="ValidateUsername()" type="text" class="form-control form-input"  placeholder="Enter Username" autofocus="autofocus"/></td>
+							</tr>
+							<tr ng-show="UsernameError">
+							<td class="text-danger error-font">Username cannot be empty</td>							  		
+							</tr>
+
+							<tr>
+								<td><input path="username" ng-model="Date" ng-change="ValidateDate()" type="date" class="form-control form-input"  placeholder="Enter Date"/></td>
+							</tr>
+							<tr ng-show="DateEmpty">
+							<td class="text-danger error-font">Date Cannot be Empty</td>							  		
+							</tr>
+										  	
+							<tr>
+								<td><input path="password" type="password" ng-model="Password" ng-change="ValidatePassword()" class="form-control form-input" placeholder="Enter Password"/></td>								
+							</tr>
+							<tr ng-show="PasswordError">
+							<td class="text-danger error-font">Password must be greater than 8 characters</td>
+							</tr>
+							
+							<tr>
+								<td><input path="cPassword" type="password" ng-model="ConfirmPassword" ng-change="ValidateConfirmPassword()" class="form-control form-input" id="cpassword" placeholder="Confirm Password"/></td>								
+							</tr>
+							<tr ng-show="ConfirmPasswordError">
+							<td class="text-danger error-font">Passwords do not match</td>
+							</tr>
+							
+							<tr>
+								<td><input path="phone" type="number" class="form-control form-input" id="phone" placeholder="Enter Phone No." ng-model="Phone" ng-change="ValidatePhone()"/></td>
+							</tr>
+							<tr ng-show="PhoneError">
+							<td class="text-danger error-font">Please enter a valid Indian mobile number</td>						</tr>
+							
+							<tr>
+								<td>
+								<select path="gender" class="form-control select-menu">
+								  <option value="Male">Male</option>
+								  <option value="Female">Female</option>								  
+								</select>
+								</td>
+							</tr>
+							
+							<tr>
+								<td><textarea style="resize: none;" path="location" ng-model="Location" ng-change="ValidateLocation()" class="form-control form-input" id="address" placeholder="Enter Location"></textarea></td>								
+							</tr>
+							<tr ng-show="LocationError">
+							<td class="text-danger error-font">Location cannot be empty</td>
+							</tr>
+							
+							<tr>
+								<td><textarea style="resize: none;" path="basicInfo" class="form-control form-input" id="basicinfo" placeholder="Enter Qualifications" ng-model="Qualifications" ng-change="ValidateQualifications()"></textarea></td>
+							</tr>
+							<tr ng-show="QualificationsError">
+							<td class="text-danger error-font">Qualifications cannot be empty</td>
+							</tr>
+
+							<tr ng-show="showMentorSignupProgress">
+								<td colspan="2">
+								<div class="loader"></div>
+								</td>
+							</tr>
+
+							<tr>
+								<td colspan="2" >
+								<div class="row">
+									<div class="col-md-2 col-md-offset-5"> <button class="btn btn-success" ng-click="SubmitMentorSignUp()" ng-disabled="OverallError">Submit</button> </div>
+								</div>
+								</td>
+							</tr>
+										  	
+						</table>
+
+						<div id="snackbar1">Some text some message..</div>
+					
+				</div>
+			
+			</div>
+									        <!--  -->
+
+									      </div>
+									      
+									    </div>
+
+									  </div>
+									</div>
+									<!-- MentorSignupModal -->
+
+<!--  -->
+<div class="Underline" id="HeaderDiv" ng-controller="indexController">
+		<span class="Underline-Text">Graffitat&nbsp;</span>
+		&nbsp;
+		&nbsp;
+		&nbsp;
+		<span class="glyphicon glyphicon-question-sign" style="color: #FFFFFF; top: 5px;"></span>
+
+		<div class="loader1" id="loader1"></div>
+		
+	</div>
+	
+	<div id="navigation">
+	
+		<ul class="nav">
+			<li><a class="navigation-element" href="#/home">Home</a></li>
+			<li><a class="navigation-element" href="#/aboutus">About Us</a></li>
+		</ul>
+	
+	</div>
+	
+	<footer class="container-fluid text-center footer">
+		<p><b>&copy; Vasudev Vashisht</b></p>
+	</footer>
+<!--  -->
+
+	<div ng-view class="body" id="body_div"></div>
+
+</body>
+
+</html>
